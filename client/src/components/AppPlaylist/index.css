@@ -1,0 +1,18 @@
+.App-playlist {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1020px) {
+  .App-playlist {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
