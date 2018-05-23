@@ -42,7 +42,7 @@ var app = express();
 app.use(express.static(__dirname + '/public'))
    .use(cookieParser());
 
- app.use( bodyParser.json() );       // to support JSON-encoded bodies
+ app.use(bodyParser.json());       // to support JSON-encoded bodies
  app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
    extended: true
  }));
@@ -138,7 +138,8 @@ app.post('/api/refresh_token', function(req, res) {
         querystring.stringify({
           access_token: access_token,
           refresh_token: refresh_token
-        }));
+        })
+      );
     }
   });
 });

@@ -1,0 +1,82 @@
+.PopupWindow {
+  background-color: #6c41ec;
+  width: 100%;
+}
+
+.PopupWindow-header {
+  padding: .77rem 0;
+  background-color: #010c3f;
+  margin-bottom: 5px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.22rem;
+  color: #fff;
+}
+
+.highlight {
+  color: #6c41ec;
+}
+
+.PopupWindow img{
+  width: 100%;
+}
+
+.PopupWindow p{
+  font-size: .83rem;
+}
+
+.label {
+  color: #010c3f;
+  font-size: 2rem;
+  font-style: bold;
+}
+
+.notAvailable {
+  color: #CF000F;
+  font-weight: bold;
+  background-color: #2C3E50;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.Playlist-add {
+  cursor: pointer;
+  padding: .77rem;
+  border-radius: 54px;
+  margin-top: 1.27rem;
+  background-color: #2C3E50;
+  text-align: center;
+  font-size: .83rem;
+}
+
+.Playlist-add:hover {
+  color: rgba(265, 265, 265, .5);
+}
+
+
+.grid-container {
+  display: grid;
+  background-color: rgb(108,65,236);
+}
+
+.grid-item {
+  background-color: rgb(108,65,236);
+  text-align: center;
+}
+
+.item1 {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+.item2 {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 5px;
+}
+
+.item3 {
+  grid-column: 2 ;
+  grid-row: 2;
+  padding: 20px;
+}

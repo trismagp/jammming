@@ -20,33 +20,37 @@ class Home extends Component {
   };
 
 
-  searchSpotify(searchString) {
+  async searchSpotify(searchString) {
     let {access_token,refresh_token} = Spotify.getAccessToken();
     if(!this.state.access_token){
-        if(!access_token){
-          this.setState({
-            redirect:true
-          });
-          return;
-        }else{
-          this.setState({
-            redirect:false,
-            access_token:access_token,
-            refresh_token:refresh_token
-          });
-        }
+      if(!access_token){
+        this.setState({
+          redirect:true
+        });
+        return;
+      }else{
+        this.setState({
+          redirect:false,
+          access_token:access_token,
+          refresh_token:refresh_token
+        });
+      }
     }
 
     access_token = access_token || this.state.access_token;
 
     if(access_token){
-      Spotify.search(access_token,searchString).then(tracks=>{
+      const tracks = await Spotify.search(access_token,searchString);
+      if(tracks.length>0){
         this.setState({
           redirect:false,
           tracks:tracks
         });
-      });
-      this.props.history.push('/');
+        this.props.history.push('/');
+        return tracks.length;
+      }
+    }else{
+      return 0;
     }
   }
 

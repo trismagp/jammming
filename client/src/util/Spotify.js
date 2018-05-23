@@ -42,6 +42,9 @@ const Spotify = {
       return false;
     }
   },
+  getTrackArtistsString(artists){
+    return artists.map(artist => artist.name).join(', ');
+  },
   async search(access_token, searchString){
     try{
       const url = `https://api.spotify.com/v1/search?q=*${searchString}*&type=track`;
@@ -51,12 +54,15 @@ const Spotify = {
           return response.json();
       }).then(jsonResponse=>{
         if(jsonResponse.tracks){
+          console.log(jsonResponse.tracks);
           tracks = jsonResponse.tracks.items.map(track=>{
             return{
               id:track.id,
               title:track.name,
-              singer:track.artists[0].name,
-              album:track.album.name
+              artists:this.getTrackArtistsString(track.artists),
+              album:track.album.name,
+              previewUrl:track.preview_url,
+              albumImageUrl:track.album.images[1].url,
             };
           });
           return tracks;
@@ -65,11 +71,12 @@ const Spotify = {
       return tracklist;
     }catch(error){
       console.log(error);
+      return false;
     }
   },
-
   async getUserId(token){
     const url ='https://api.spotify.com/v1/me';
+    console.log(token);
     var userId = await fetch(url,{
       headers:{"Authorization":`Bearer ${token}`},
       json:true
